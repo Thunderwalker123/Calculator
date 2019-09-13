@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js\jquery.mobile-1.4.5.css">
+    <script src="js\jquery.js"></script>
+    <script src="js\jquery.mobile-1.4.5.js"></script>
+    <script>
+        function isNumber(event) {
+            var keycode = event.keyCode;
+            if (keycode > 0 || keycode < 0) {
+                return true;
+            }
+            return false;
+        }
+
+        function calculate1() {
+            try {
+                var number1 = parseInt(validate(document.getElementById('number1').value.trim()));
+                var number2 = parseInt(validate(document.getElementById('number2').value.trim()));
+                var calculate = document.getElementById('calculate').value;
+                document.getElementById('result').value = operate(number1, number2, calculate);
+            document.getElementById('cals').value = number1 + '\xa0' + calculate + '\xa0' + number2;
+            } catch (err) {
+                alert("There was a problem: " + err.messaqge);
+            }
+        }
+
+        function operate(number1, number2, calculate) {
+
+            if (calculate === '+') {
+                return number1 + number2;
+            }
+            if (calculate === '-') {
+                return number1 - number2;
+            }
+            if (calculate === '/') {
+                return number1 / number2;
+            }
+            if (calculate === '*') {
+                return number1 * number2;
+            }
+        }
+
+
+
+        function validate(value) {
+            if (value == null || value == "") {
+                alert("Required Field");
+                return 0;
+            } else if (isNaN(value)) {
+                alert("Must be a Number Field");
+                return 0;
+            } else return value;
+        }
+    </script>
+</head>
+
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+
+            <h1>Simple Calculator</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pageone" data-icon="home" class="ui-btn">Home</a></li>
+                <li><a href="#pagetwo" data-icon="grid" class="ui-btn">Calculator</a></li>
+                <li><a href="#pagefour" data-icon="info" class="ui-btn">Help</a></li>
+            </ul>
+        </div>
+        <div data-role="main" class="ui-content">
+            <p>This is a JQuery mobile exercise which provides the user with a calculator for basic mathematical operation</p>
+        </div>
+        <div data-role="footer">
+            <h1>Homework</h1>
+        </div>
+    </div>
+    <div data-role="page" id="pagetwo">
+        <div data-role="header">
+
+            <h1>Simple Calculator</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pageone" data-icon="home" class="ui-btn">Home</a></li>
+                <li><a href="#pagetwo" data-icon="grid" class="ui-btn">Calculator</a></li>
+                <li><a href="#pagefour" data-icon="info" class="ui-btn">Help</a></li>
+            </ul>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form method="post" action "">
+                <input type="text" name="number1" id="number1" onkeylogger="">
+                <fieldset class="ui-fieldset-contain">
+                    <select name="calculate" id="calculate">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        </select>
+                </fieldset>
+                <input type="text" name="number2" id="number2">
+                <a href="#pagethree" class="ui-btn" onclick="calculate1();">calculate</a>
+            </form>
+        </div>
+        <div data-role="footer">
+            <h1>Homework</h1>
+        </div>
+    </div>
+    <div data-role="page" id="pagethree">
+        <div data-role="header">
+
+            <h1>Simple Calculator</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pageone" data-icon="home" class="ui-btn">Home</a></li>
+                <li><a href="#pagetwo" data-icon="grid" class="ui-btn">Calculator</a></li>
+                <li><a href="#pagefour" data-icon="info" class="ui-btn">Help</a></li>
+            </ul>
+        </div>
+        <form action="post">
+            <label for="Operation">Operation</label>
+            <input type="text" id="cals" readonly>
+            <label for="result">result</label>
+            <input type="text" id="result" readonly>
+            <a href="#pagetwo" data-icon="back" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+        </form>
+        <div data-role="footer">
+            <h1>Homework</h1>
+        </div>
+    </div>
+    <div data-role="page" id="pagefour">
+        <div data-role="header">
+
+            <h1>Simple Calculator</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pageone" data-icon="home" class="ui-btn">Home</a></li>
+                <li><a href="#pagetwo" data-icon="grid" class="ui-btn">Calculator</a></li>
+                <li><a href="#pagefour" data-icon="info" class="ui-btn">Help</a></li>
+            </ul>
+        </div>
+        <div data-role="main" class="ul-content">
+    <p>This is the help section and provides basic information about how to use the calculator </p>
+    <a href="#pagefive" class="ui-btn ui-icon-info ui-btn-icon-left">More Info</a>
+    </div>
+        <div data-role="footer">
+            <h1>Homework</h1>
+        </div>
+    </div>
+    <div data-role="page"  id="pagefive" data-dialog="true" data-theme="a">
+  <div data-role="header">
+  <h1> More Info </h1>
+  </div>
+<div data-role="main" class="ui-content">
+<p> You have requested more information about the App! </p>
+<a href="#pagefour" class="ui-btn ui-icon-back ui-btn-icon-left">Dismiss</a>
+</div>
+</div>
+</body>
+
+</html>
